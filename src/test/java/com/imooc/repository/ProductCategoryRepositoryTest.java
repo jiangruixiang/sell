@@ -26,6 +26,6 @@ public class ProductCategoryRepositoryTest {
         //ProductCategory productCategory = repository.findOne(1);jpa版本问题，此方法弃用，用如下方法
         ProductCategory productCategory = repository.findById(1).get();
         System.out.println(productCategory.toString());
-        //System.out.println("hello world");
+        System.out.println("hello world");
     }
 }
