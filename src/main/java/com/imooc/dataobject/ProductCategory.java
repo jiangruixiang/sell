@@ -19,7 +19,7 @@ public class ProductCategory {
 
     /** 类目id. */
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer categoryId;
 
     /** 类目名字. */
@@ -27,10 +27,6 @@ public class ProductCategory {
 
     /** 类目编号. */
     private Integer categoryType;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public ProductCategory() {
     }

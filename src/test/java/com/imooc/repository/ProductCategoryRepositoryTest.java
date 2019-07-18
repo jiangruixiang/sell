@@ -2,6 +2,7 @@ package com.imooc.repository;
 
 import com.imooc.dataobject.ProductCategory;
 import com.imooc.SellApplication;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -27,5 +28,13 @@ public class ProductCategoryRepositoryTest {
         ProductCategory productCategory = repository.findById(1).get();
         System.out.println(productCategory.toString());
         System.out.println("hello world");
+    }
+
+    @Test
+    public void saveTest(){
+        ProductCategory productCategory = new ProductCategory("女生最爱",3);
+        ProductCategory result = repository.save(productCategory);
+        //断言，为空不往下执行
+        Assert.assertNotNull(result);
     }
 }
