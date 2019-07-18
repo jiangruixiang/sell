@@ -32,9 +32,10 @@ public class ProductCategoryRepositoryTest {
 
     @Test
     public void saveTest(){
-        ProductCategory productCategory = new ProductCategory("女生最爱",3);
+        ProductCategory productCategory = new ProductCategory("女生最爱",5);
         ProductCategory result = repository.save(productCategory);
         //断言，为空不往下执行
         Assert.assertNotNull(result);
+        System.out.println("hello world");
     }
 }
