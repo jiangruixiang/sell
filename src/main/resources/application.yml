@@ -1,7 +1,10 @@
-# com.mysql.cj.jdbc.Driver
+#  com.mysql.cj.jdbc.Driver
+#  com.mysql.jdbc.Driver 是 mysql-connector-java 5中的，
+#  com.mysql.cj.jdbc.Driver 是 mysql-connector-java 6中的
+#  JDBC连接Mysql6 com.mysql.cj.jdbc.Driver， 需要指定时区serverTimezone=GMT%2B8
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: xyl
     password: xyl2017
     url: jdbc:mysql://127.0.0.1:3306/sell?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
