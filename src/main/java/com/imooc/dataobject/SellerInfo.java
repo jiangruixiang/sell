@@ -6,9 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by 廖师兄
- * 2017-07-23 23:02
- */
+ * @program: sell
+ * @author: 姜瑞祥
+ * @create: 2019-07-20 10:36
+ **/
 @Data
 @Entity
 public class SellerInfo {
