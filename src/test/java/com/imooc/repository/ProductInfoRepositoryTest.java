@@ -24,7 +24,7 @@ public class ProductInfoRepositoryTest {
 
     @Test
     public void saveTest(){
-        ProductInfo productInfo = new ProductInfo("123456","皮蛋粥",new BigDecimal(3.2),100,"很好喝的粥","http://xxx.jpg",0,2);
+        ProductInfo productInfo = new ProductInfo("123458","芒果冰",new BigDecimal(3.2),100,"冰冰的很好恰","http://xxx.jpg",0,3);
         ProductInfo result = repository.save(productInfo);
         System.out.println(productInfo);
         Assert.assertNotNull(result);

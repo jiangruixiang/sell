@@ -13,7 +13,7 @@ public class ResultVOUtil {
     public static ResultVO success(Object object){
         ResultVO resultVO = new ResultVO();
         resultVO.setData(object);
-        resultVO.setCodde(0);
+        resultVO.setCode(0);
         resultVO.setMsg("成功");
         return resultVO;
     }
@@ -22,7 +22,7 @@ public class ResultVOUtil {
     }
     public static ResultVO error(Integer caode,String msg){
         ResultVO resultVO = new ResultVO();
-        resultVO.setCodde(caode);
+        resultVO.setCode(caode);
         resultVO.setMsg(msg);
         return resultVO;
     }
