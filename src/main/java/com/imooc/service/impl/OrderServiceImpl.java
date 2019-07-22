@@ -59,7 +59,7 @@ public class OrderServiceImpl implements OrderService {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
             //2. 计算订单总价
-            orderAmount = orderDetail.getProductPrice().
+            orderAmount = productInfo.getProductPrice().
                     multiply(new BigDecimal(orderDetail.getProductQuantity())).add(orderAmount);
 
             //订单详情入库
@@ -70,8 +70,8 @@ public class OrderServiceImpl implements OrderService {
 
             //3. 写入订单数据库（orderMaster和orderDetail）
             OrderMaster orderMaster = new OrderMaster();
-            orderDTO.setOrderId(orderId);
             BeanUtils.copyProperties(orderDTO, orderMaster);
+            orderMaster.setOrderId(orderId);
             orderMaster.setOrderAmount(orderAmount);
             orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
             orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());
@@ -82,7 +82,7 @@ public class OrderServiceImpl implements OrderService {
             ).collect(Collectors.toList());
             productService.decreaseStock(cartDTOList);
         }
-        return null;
+        return orderDTO;
     }
 
     @Override
