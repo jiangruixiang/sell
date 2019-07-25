@@ -2,21 +2,30 @@ package com.imooc.service.impl;
 
 import com.imooc.dataobject.OrderDetail;
 import com.imooc.dataobject.OrderMaster;
+import com.imooc.dto.CartDTO;
 import com.imooc.dto.OrderDTO;
+import com.imooc.enums.OrderStatusEnum;
+import com.imooc.enums.PayStatusEnum;
+import com.imooc.enums.ResultEnum;
+import com.imooc.exception.SellException;
 import com.imooc.repository.OrderMasterRepository;
+import com.imooc.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.Assert;
 import org.junit.runner.RunWith;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
@@ -28,6 +37,9 @@ public class OrderServiceImplTest {
     private OrderServiceImpl orderService;
 
     @Autowired
+    private ProductService productService;
+
+    @Autowired
     private OrderMasterRepository orderMasterRepository;
 
     private final String BUYER_OPENID = "110110";
@@ -35,7 +47,6 @@ public class OrderServiceImplTest {
     private final String ORDER_ID = "1563863707329429263";
     @Test
     public void create() {
-
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setBuyerName("廖师兄");
         orderDTO.setBuyerAddress("幕课网");
@@ -80,14 +91,23 @@ public class OrderServiceImplTest {
 
     @Test
     public void cancel() {
+        OrderDTO orderDTO = orderService.findOne(ORDER_ID);
+        OrderDTO result = orderService.cancel(orderDTO);
+        Assert.assertEquals(OrderStatusEnum.CANCEL.getCode(),result.getOrderStatus());
     }
 
     @Test
     public void finish() {
+        OrderDTO orderDTO = orderService.findOne(ORDER_ID);
+        OrderDTO result = orderService.finish(orderDTO);
+        Assert.assertEquals(OrderStatusEnum.FINISHED.getCode(),result.getOrderStatus());
     }
 
     @Test
     public void paid() {
+        OrderDTO orderDTO = orderService.findOne(ORDER_ID);
+        OrderDTO result = orderService.paid(orderDTO);
+        Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(),result.getPayStatus());
     }
 
     @Test
