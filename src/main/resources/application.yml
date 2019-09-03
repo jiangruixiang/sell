@@ -5,8 +5,8 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: xyl
-    password: xyl2017
+    username: root
+    password: rootadmin
     url: jdbc:mysql://127.0.0.1:3306/sell?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
   jpa:
     show-sql: true
@@ -15,3 +15,7 @@ spring:
 server:
   servlet:
     context-path: /sell
+
+wechat:
+  mpAppId: wxdd003919a259f077
+  mpAppSecret: eb66d70a555db0b52f026a6659bb3ed3
